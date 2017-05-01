@@ -1,0 +1,40 @@
+pragma solidity ^0.4.0;
+
+contract putMoney{
+    
+    event saveRecord(address _address, uint _amount);
+    event takeRecord(address _address, uint _amount);
+    
+    enum State {Initial, Empty, HaveMoney}
+    State state;
+    
+    function putMoney(){
+        state = State.Initial;
+    }
+    
+    uint public totalAmount;
+    
+    function putIn() payable{
+        totalAmount += msg.value;
+        saveRecord(msg.sender, msg.value);
+        state = State.HaveMoney;
+    }
+    
+    function takeOut(uint input){
+        var receiver = msg.sender;
+		    var value = input;
+        if(!receiver.send(value)) throw;
+        totalAmount -= value;
+        takeRecord(msg.sender, input);
+        if(totalAmount == 0)
+            state = State.Empty;
+    }
+    
+    function showState() constant returns(string _return){
+		if(state == State.Initial) _return = "Initial";
+		else if(state == State.HaveMoney) _return = "Have Money!";
+		else if(state == State.Empty) _return = "Have No Money!";
+		else throw;
+	}
+    
+}
