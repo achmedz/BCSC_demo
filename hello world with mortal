@@ -1,0 +1,21 @@
+pragma solidity ^0.4.1;
+
+contract mortal {
+    address owner;
+    function mortal() {
+          owner = msg.sender;     }
+   
+    function kill() {
+          if (msg.sender == owner)
+    selfdestruct(owner);    }
+}
+
+contract helloworld is mortal{
+  string storeData;
+
+  function set(string x) {
+    storeData = x;  }
+
+  function get() constant returns (string data) {
+    return storeData;  }
+}
