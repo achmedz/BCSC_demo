@@ -1,0 +1,28 @@
+pragma solidity ^0.4.10;
+
+contract enum_example{
+    enum ActionCode {Left, Right, Forward}
+    ActionCode public b2;
+    
+    function Right(){
+        b2 = ActionCode.Right;
+    }
+    
+    function Left(){
+        b2 = ActionCode.Left;
+    }
+    
+    function Forward(){
+        b2 = ActionCode.Forward;
+    }
+    
+    function f() returns(string str){
+        if(b2 == ActionCode.Right)
+            return "Right";
+        if(b2 == ActionCode.Left)
+            return "Left";
+        if(b2 == ActionCode.Forward)
+            return "Forward";
+    }
+    
+}
