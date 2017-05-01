@@ -1,0 +1,23 @@
+pragma solidity ^0.4.0;
+
+contract putMoney{
+    
+    function putMoney(){
+    }
+    
+    uint public totalAmount;
+    
+    function putIn() payable{
+        totalAmount += msg.value;
+    }
+    
+    function takeOut(uint input){
+        var receiver = msg.sender;
+	      var value = input;
+        if(!receiver.send(value)) throw;
+        totalAmount -= value;
+    }
+    
+    
+    
+}
