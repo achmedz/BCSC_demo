@@ -1,0 +1,39 @@
+pragma solidity ^0.4.10;
+
+contract str_example{
+    string[] public strArr;
+    function init(){
+        if(strArr.length != 0) throw;
+        
+            strArr.push("init");
+    }
+    
+    function add(string str){
+        strArr.push(str);
+    }
+    
+    function update(uint index, string str){
+        if (index > strArr.length) throw;
+        strArr[index] = str;
+    }
+    
+    function del(uint index){
+        uint len = strArr.length;
+        if (index > len-1 ) throw;
+        for (uint i = index; i<len-1; i++){
+            strArr[i] = strArr[i+1];
+        }
+        delete strArr[len-1];
+        strArr.length--;
+    }
+    
+    function lengthOf() returns(uint length){
+        uint len = strArr.length;
+        return len;
+    }
+    
+    function valueOf(uint index) returns(string value){
+        if (index > strArr.length-1) throw;
+        return strArr[index];
+    }
+}
