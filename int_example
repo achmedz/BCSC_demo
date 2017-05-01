@@ -1,0 +1,32 @@
+pragma solidity ^0.4.9;
+
+contract Demo {
+    uint[] public intArray;
+    function add(uint a){
+        intArray.push(a);
+    }
+    
+    function del(uint index){
+        uint len = intArray.length;
+        if (index >= len) return;
+        for(uint i = index ;i < len-1; i++){
+            intArray[i] = intArray[i+1];
+        }
+        delete intArray[len-1];
+        intArray.length--;
+    }
+    
+    function lengthOf() returns(uint len){
+        uint result = intArray.length;
+        return result;
+    }
+    
+    function update(uint index, uint value){
+        intArray[index] = value;
+    }
+    
+    function valueOf(uint index) returns(uint value){
+        uint result = intArray[index];
+        return result;
+    }
+}
