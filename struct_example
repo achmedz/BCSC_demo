@@ -1,0 +1,36 @@
+pragma solidity ^0.4.9;
+
+contract stract_example{
+    struct Person{
+        string name;
+        uint sexy;
+        uint age;
+        string mobile;
+    }
+    
+    Person[] public PersonList;
+    
+    function Demo(){
+        uint id = PersonList.length++;
+        Person p = PersonList[id];
+        p.name = "Jimmy";
+        p.sexy = 0;
+        p.age = 24;
+        p.mobile = "0987654321";
+    }
+ 
+    function Add_typ_1(string name, uint sexy, uint age, string mobile){
+        Person memory tmp;
+        tmp.name = name;
+        tmp.sexy = sexy;
+        tmp.age = age;
+        tmp.mobile = mobile;
+
+        PersonList.push(tmp);
+    }
+    
+    function Add_typ_2(string name, uint sexy, uint age, string mobile){
+        uint id = PersonList.length++;
+        PersonList[id] = Person({name:name, sexy:sexy, age:age, mobile:mobile});
+    }
+}
