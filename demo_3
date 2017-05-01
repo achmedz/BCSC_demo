@@ -22,7 +22,7 @@ contract putMoney{
     
     function takeOut(uint input){
         var receiver = msg.sender;
-		    var value = input;
+	var value = input;
         if(!receiver.send(value)) throw;
         totalAmount -= value;
         takeRecord(msg.sender, input);
@@ -31,10 +31,10 @@ contract putMoney{
     }
     
     function showState() constant returns(string _return){
-		if(state == State.Initial) _return = "Initial";
-		else if(state == State.HaveMoney) _return = "Have Money!";
-		else if(state == State.Empty) _return = "Have No Money!";
-		else throw;
-	}
+	if(state == State.Initial) _return = "Initial";
+	else if(state == State.HaveMoney) _return = "Have Money!";
+	else if(state == State.Empty) _return = "Have No Money!";
+	else throw;
+    }
     
 }
