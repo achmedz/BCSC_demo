@@ -26,3 +26,6 @@ contract putMoney{
         takeRecord(msg.sender, input);
     }
 }
+
+
+//inaddress:0x6ebe4343F5393d77Be14A6b96216F88948dB4Ca4
