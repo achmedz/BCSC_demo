@@ -33,4 +33,8 @@ contract stract_example{
         uint id = PersonList.length++;
         PersonList[id] = Person({name:name, sexy:sexy, age:age, mobile:mobile});
     }
+    
+    function updateNmae(string newName){
+        PersonList[0].name = newName;
+    }
 }
